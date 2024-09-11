@@ -1,0 +1,17 @@
+export DB_CONNECTION="pgsql"
+export DB_HOST="metiermedia.cfga6uieix9u.ap-south-1.rds.amazonaws.com"
+export DB_PORT="5432"
+export DB_DATABASE="one_homes_ai"
+export DB_USERNAME="one_homes_ai"
+export DB_PASSWORD="3ngcV505X29f"
+
+cd /usr/share/nginx/html/1homes.ai
+sudo rm -rf storage/app/property/*
+sudo chown -R ec2-user:nginx storage/app/property
+php artisan db:seed
+php artisan migrate:refresh
+sudo rm -rf storage/app/property/*
+sudo chown ec2-user:nginx storage/logs/laravel.log
+php artisan db:seed
+sudo chown nginx:ec2-user storage/logs/laravel.log
+sudo chown -R nginx:ec2-user storage/app/property
