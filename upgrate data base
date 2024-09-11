@@ -1,0 +1,41 @@
+cd /usr/share/nginx/html/1homes.ai
+history
+export DB_CONNECTION="pgsql"
+export DB_HOST="metiermedia.cfga6uieix9u. ap-south-1.rds. amazonaws.com"
+export DB_PORT="5432"
+export DB_DATABASE="one_homes_ai"
+export DB_USERNAME="one_homes_ai"
+export DB_PASSWORD="3ngcV505X29f"
+cd storage/app/property/
+sudo chown -R ec2-user:nginx storage/app/property
+cd storage/app/property/
+1s -1
+rm -rf *
+1s -1
+cd ..
+php artisan migrate:refresh
+php artisan db: seed
+php artisan migrate: refresh
+chown -R ec2-user:nginx storage
+sudo chown -R ec2-user:nginx storage
+rm -rf storage/app/property/*
+php artisan db: seed
+sudo chown -R nginx:ec2-user storage
+exit
+cd /usr/share/nginx/html/1homes.ai
+git pull
+exit
+sudo certbot
+cd /etc/nginx/conf.d/
+cat lhomes.oneolabs.com.conf
+sudo cp 1homes.oneolabs.com.conf 1homes.ai.conf
+sudo nano 1homes.ai.conf
+sudo nginx -t
+sudo service nginx restart
+sudo certbot
+sudo nano 1homes.ai.conf
+sudo service nginx reload
+sudo certbot
+sudo nano 1homes.ai.conf
+sudo certbot
+exit
